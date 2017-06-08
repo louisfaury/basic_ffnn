@@ -1,0 +1,12 @@
+/*
+!.gitignore
+!bffnn_uml.uxf
+!README.md
+
+/*/
+!/src/
+!/build/
+/build/*
+!/build/Makefile
+
+

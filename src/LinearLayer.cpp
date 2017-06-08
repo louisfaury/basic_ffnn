@@ -19,3 +19,4 @@ LinearLayer::LinearLayer(int size) : Layer(size)
     }
 }
 
+
