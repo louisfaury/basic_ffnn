@@ -204,6 +204,33 @@ LinearNeuron.cpp.s:
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/LinearNeuron.cpp.s
 .PHONY : LinearNeuron.cpp.s
 
+NeuralNetwork.o: NeuralNetwork.cpp.o
+
+.PHONY : NeuralNetwork.o
+
+# target to build an object file
+NeuralNetwork.cpp.o:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/NeuralNetwork.cpp.o
+.PHONY : NeuralNetwork.cpp.o
+
+NeuralNetwork.i: NeuralNetwork.cpp.i
+
+.PHONY : NeuralNetwork.i
+
+# target to preprocess a source file
+NeuralNetwork.cpp.i:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/NeuralNetwork.cpp.i
+.PHONY : NeuralNetwork.cpp.i
+
+NeuralNetwork.s: NeuralNetwork.cpp.s
+
+.PHONY : NeuralNetwork.s
+
+# target to generate assembly for a file
+NeuralNetwork.cpp.s:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/NeuralNetwork.cpp.s
+.PHONY : NeuralNetwork.cpp.s
+
 Neuron.o: Neuron.cpp.o
 
 .PHONY : Neuron.o
@@ -330,6 +357,9 @@ help:
 	@echo "... LinearNeuron.o"
 	@echo "... LinearNeuron.i"
 	@echo "... LinearNeuron.s"
+	@echo "... NeuralNetwork.o"
+	@echo "... NeuralNetwork.i"
+	@echo "... NeuralNetwork.s"
 	@echo "... Neuron.o"
 	@echo "... Neuron.i"
 	@echo "... Neuron.s"

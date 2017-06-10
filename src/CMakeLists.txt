@@ -4,7 +4,7 @@ project (ffnn)
 set (PATH ${CMAKE_CURRENT_SOURCE_DIR})
 
 # include
-INCLUDE_DIRECTORIES(PATH)
+INCLUDE_DIRECTORIES(PATH ../lib/)
 
 # adds files
 set(SRCS
@@ -15,7 +15,10 @@ set(SRCS
     Layer.cpp
     SigmoidLayer.cpp
     LinearLayer.cpp
+    NeuralNetwork.cpp
     )
+
+#
 
 # adds executable to binary tree
 add_executable(main ${SRCS})

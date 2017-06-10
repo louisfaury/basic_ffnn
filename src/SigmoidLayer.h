@@ -13,6 +13,8 @@ class SigmoidLayer : public Layer
 public:
     SigmoidLayer();
     SigmoidLayer(int size);
+
+    virtual void mock(){}
 };
 
 #endif // SIGMOIDLAYER_H

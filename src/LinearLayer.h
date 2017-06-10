@@ -13,6 +13,8 @@ class LinearLayer : public Layer
 public:
     LinearLayer();
     LinearLayer(int size);
+
+    virtual void mock(){}
 };
 
 #endif // LINEARLAYER_H
