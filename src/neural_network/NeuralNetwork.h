@@ -38,7 +38,6 @@ protected:
     int m_depth;            // number of layers
     LayerArray m_layers;
     Weights m_weights;      // weights of the net
-
 };
 
 #endif // NEURALNETWORK_H
