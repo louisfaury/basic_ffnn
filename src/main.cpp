@@ -9,7 +9,6 @@
 #include "iostream"
 #include "dataset/Dataset.h"
 
-// TODO : dataset class
 // TODO : trainer class
 // TODO : add bias !
 

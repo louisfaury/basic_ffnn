@@ -6,6 +6,8 @@
 #ifndef DATASET_H
 #define DATASET_H
 
+// TODO : simple dataset class to be used for NeuralNetworkTrainer 
+
 class Dataset
 {
 public:
