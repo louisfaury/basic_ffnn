@@ -34,13 +34,14 @@ VectorXd Layer::getOutputs()
         ++i;
     }
 
+    return res;
 }
 
 void Layer::setActivations(VectorXd aa)
 {
     int size = aa.rows();
     if (size!=m_size)
-        assert("Wrong dimensions (Layer::setActivations)");
+        printf("Wrong dimensions (Layer::setActivations)\n");
     else
     {
         NeuralArrayIt it = m_neurons.begin();

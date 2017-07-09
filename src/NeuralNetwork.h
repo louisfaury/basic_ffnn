@@ -21,12 +21,16 @@ class NeuralNetwork
 public:
     NeuralNetwork();
     NeuralNetwork(int inSize, int outSize);
+    // TODO add destructor
 
+    // init fcts
     void addHiddenLayer(Layer* layer);
     void addOutputLayer();
     void zeroInit();
     void randInit(int range);
 
+    // predict fct
+    Eigen::VectorXd ffPredict(Eigen::VectorXd in); // feed-forward prediction
 
 protected:
     int m_inSize;           // input size

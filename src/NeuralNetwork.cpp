@@ -19,8 +19,8 @@ void NeuralNetwork::addHiddenLayer(Layer *layer)
     int rows(0), cols(0);
     if (m_depth==0)
     {
-        rows = m_inSize;
-        cols = layer->getSize();
+        cols = m_inSize;
+        rows = layer->getSize();
     }
     else
     {
@@ -37,7 +37,7 @@ void NeuralNetwork::addHiddenLayer(Layer *layer)
 
 void NeuralNetwork::addOutputLayer()
 {
-    Layer* prevLayer = m_layers.at(m_depth);
+    Layer* prevLayer = m_layers.at(m_depth-1);
     int rows = m_outSize;
     int cols = prevLayer->getSize();
 
@@ -66,6 +66,32 @@ void NeuralNetwork::randInit(int range)
                 (*it)(i,j) = val;
             }
         }
+    }
+}
+
+VectorXd NeuralNetwork::ffPredict(VectorXd in)
+{
+    VectorXd out(m_outSize);
+    if (in.rows() != m_inSize)
+    {
+        printf("Wrong input size : %i vs %i\n",(int)in.rows(),m_inSize);
+    }
+    else
+    {
+        WeightsIt wit = m_weights.begin();
+        LayerArrayIt lit = m_layers.begin();
+
+        // feed-forward
+        VectorXd hid = (*wit)*in;
+        for (int d=0; d<m_depth; d++)
+        {
+            wit++;
+            (*lit)->setActivations(hid);
+            hid = (*wit)*((*lit)->getOutputs());
+        }
+
+        out = hid;
+        return out;
     }
 }
 
