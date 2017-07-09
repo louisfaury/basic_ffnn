@@ -6,16 +6,16 @@ set (PATH ${CMAKE_CURRENT_SOURCE_DIR})
 # include
 INCLUDE_DIRECTORIES(PATH ../lib/)
 
+# add subdirectories
+add_subdirectory(dataset/)
+add_subdirectory(neuron/)
+add_subdirectory(layer/)
+add_subdirectory(neural_network/)
+
 # adds files
 set(SRCS
+    ${SRCS}
     main.cpp
-    Neuron.cpp
-    SigmoidNeuron.cpp
-    LinearNeuron.cpp
-    Layer.cpp
-    SigmoidLayer.cpp
-    LinearLayer.cpp
-    NeuralNetwork.cpp
     )
 
 #

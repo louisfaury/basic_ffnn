@@ -3,12 +3,14 @@
  * date : 08/06/17
  */
 
-#include "Neuron.h"
-#include "SigmoidLayer.h"
-#include "LinearLayer.h"
-#include "NeuralNetwork.h"
+#include "neuron/Neuron.h"
+#include "layer/SigmoidLayer.h"
+#include "neural_network/NeuralNetwork.h"
 #include "iostream"
+#include "dataset/Dataset.h"
 
+// TODO : dataset class
+// TODO : trainer class
 // TODO : add bias !
 
 int main(int argc, char** argv)
@@ -18,7 +20,7 @@ int main(int argc, char** argv)
 
     NeuralNetwork nn = NeuralNetwork(inputSize,outputSize);
     // defining hidden layers
-    SigmoidLayer* in2hid = new SigmoidLayer(10);
+    SigmoidLayer* in2hid = new SigmoidLayer(100);
     // adding hidden layers
     nn.addHiddenLayer(in2hid);
     // adding output layer
@@ -31,4 +33,6 @@ int main(int argc, char** argv)
     in << 1;
 
     std::cout << "Output : " << nn.ffPredict(in) << '\n';
+
+    Dataset ds();
 }

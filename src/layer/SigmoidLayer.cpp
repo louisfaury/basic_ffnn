@@ -4,7 +4,7 @@
  */
 
 #include "SigmoidLayer.h"
-#include "SigmoidNeuron.h"
+#include "../neuron/SigmoidNeuron.h"
 
 SigmoidLayer::SigmoidLayer() : Layer()
 {

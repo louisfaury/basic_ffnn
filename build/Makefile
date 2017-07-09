@@ -123,194 +123,113 @@ main/fast:
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
 .PHONY : main/fast
 
-Layer.o: Layer.cpp.o
+dataset/Dataset.o: dataset/Dataset.cpp.o
 
-.PHONY : Layer.o
-
-# target to build an object file
-Layer.cpp.o:
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Layer.cpp.o
-.PHONY : Layer.cpp.o
-
-Layer.i: Layer.cpp.i
-
-.PHONY : Layer.i
-
-# target to preprocess a source file
-Layer.cpp.i:
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Layer.cpp.i
-.PHONY : Layer.cpp.i
-
-Layer.s: Layer.cpp.s
-
-.PHONY : Layer.s
-
-# target to generate assembly for a file
-Layer.cpp.s:
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Layer.cpp.s
-.PHONY : Layer.cpp.s
-
-LinearLayer.o: LinearLayer.cpp.o
-
-.PHONY : LinearLayer.o
+.PHONY : dataset/Dataset.o
 
 # target to build an object file
-LinearLayer.cpp.o:
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/LinearLayer.cpp.o
-.PHONY : LinearLayer.cpp.o
+dataset/Dataset.cpp.o:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/dataset/Dataset.cpp.o
+.PHONY : dataset/Dataset.cpp.o
 
-LinearLayer.i: LinearLayer.cpp.i
+dataset/Dataset.i: dataset/Dataset.cpp.i
 
-.PHONY : LinearLayer.i
+.PHONY : dataset/Dataset.i
 
 # target to preprocess a source file
-LinearLayer.cpp.i:
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/LinearLayer.cpp.i
-.PHONY : LinearLayer.cpp.i
+dataset/Dataset.cpp.i:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/dataset/Dataset.cpp.i
+.PHONY : dataset/Dataset.cpp.i
 
-LinearLayer.s: LinearLayer.cpp.s
+dataset/Dataset.s: dataset/Dataset.cpp.s
 
-.PHONY : LinearLayer.s
+.PHONY : dataset/Dataset.s
 
 # target to generate assembly for a file
-LinearLayer.cpp.s:
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/LinearLayer.cpp.s
-.PHONY : LinearLayer.cpp.s
+dataset/Dataset.cpp.s:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/dataset/Dataset.cpp.s
+.PHONY : dataset/Dataset.cpp.s
 
-LinearNeuron.o: LinearNeuron.cpp.o
+layer/Layer.o: layer/Layer.cpp.o
 
-.PHONY : LinearNeuron.o
+.PHONY : layer/Layer.o
 
 # target to build an object file
-LinearNeuron.cpp.o:
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/LinearNeuron.cpp.o
-.PHONY : LinearNeuron.cpp.o
+layer/Layer.cpp.o:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/layer/Layer.cpp.o
+.PHONY : layer/Layer.cpp.o
 
-LinearNeuron.i: LinearNeuron.cpp.i
+layer/Layer.i: layer/Layer.cpp.i
 
-.PHONY : LinearNeuron.i
+.PHONY : layer/Layer.i
 
 # target to preprocess a source file
-LinearNeuron.cpp.i:
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/LinearNeuron.cpp.i
-.PHONY : LinearNeuron.cpp.i
+layer/Layer.cpp.i:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/layer/Layer.cpp.i
+.PHONY : layer/Layer.cpp.i
 
-LinearNeuron.s: LinearNeuron.cpp.s
+layer/Layer.s: layer/Layer.cpp.s
 
-.PHONY : LinearNeuron.s
+.PHONY : layer/Layer.s
 
 # target to generate assembly for a file
-LinearNeuron.cpp.s:
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/LinearNeuron.cpp.s
-.PHONY : LinearNeuron.cpp.s
+layer/Layer.cpp.s:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/layer/Layer.cpp.s
+.PHONY : layer/Layer.cpp.s
 
-NeuralNetwork.o: NeuralNetwork.cpp.o
+layer/LinearLayer.o: layer/LinearLayer.cpp.o
 
-.PHONY : NeuralNetwork.o
+.PHONY : layer/LinearLayer.o
 
 # target to build an object file
-NeuralNetwork.cpp.o:
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/NeuralNetwork.cpp.o
-.PHONY : NeuralNetwork.cpp.o
+layer/LinearLayer.cpp.o:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/layer/LinearLayer.cpp.o
+.PHONY : layer/LinearLayer.cpp.o
 
-NeuralNetwork.i: NeuralNetwork.cpp.i
+layer/LinearLayer.i: layer/LinearLayer.cpp.i
 
-.PHONY : NeuralNetwork.i
+.PHONY : layer/LinearLayer.i
 
 # target to preprocess a source file
-NeuralNetwork.cpp.i:
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/NeuralNetwork.cpp.i
-.PHONY : NeuralNetwork.cpp.i
+layer/LinearLayer.cpp.i:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/layer/LinearLayer.cpp.i
+.PHONY : layer/LinearLayer.cpp.i
 
-NeuralNetwork.s: NeuralNetwork.cpp.s
+layer/LinearLayer.s: layer/LinearLayer.cpp.s
 
-.PHONY : NeuralNetwork.s
+.PHONY : layer/LinearLayer.s
 
 # target to generate assembly for a file
-NeuralNetwork.cpp.s:
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/NeuralNetwork.cpp.s
-.PHONY : NeuralNetwork.cpp.s
+layer/LinearLayer.cpp.s:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/layer/LinearLayer.cpp.s
+.PHONY : layer/LinearLayer.cpp.s
 
-Neuron.o: Neuron.cpp.o
+layer/SigmoidLayer.o: layer/SigmoidLayer.cpp.o
 
-.PHONY : Neuron.o
+.PHONY : layer/SigmoidLayer.o
 
 # target to build an object file
-Neuron.cpp.o:
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Neuron.cpp.o
-.PHONY : Neuron.cpp.o
+layer/SigmoidLayer.cpp.o:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/layer/SigmoidLayer.cpp.o
+.PHONY : layer/SigmoidLayer.cpp.o
 
-Neuron.i: Neuron.cpp.i
+layer/SigmoidLayer.i: layer/SigmoidLayer.cpp.i
 
-.PHONY : Neuron.i
-
-# target to preprocess a source file
-Neuron.cpp.i:
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Neuron.cpp.i
-.PHONY : Neuron.cpp.i
-
-Neuron.s: Neuron.cpp.s
-
-.PHONY : Neuron.s
-
-# target to generate assembly for a file
-Neuron.cpp.s:
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Neuron.cpp.s
-.PHONY : Neuron.cpp.s
-
-SigmoidLayer.o: SigmoidLayer.cpp.o
-
-.PHONY : SigmoidLayer.o
-
-# target to build an object file
-SigmoidLayer.cpp.o:
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/SigmoidLayer.cpp.o
-.PHONY : SigmoidLayer.cpp.o
-
-SigmoidLayer.i: SigmoidLayer.cpp.i
-
-.PHONY : SigmoidLayer.i
+.PHONY : layer/SigmoidLayer.i
 
 # target to preprocess a source file
-SigmoidLayer.cpp.i:
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/SigmoidLayer.cpp.i
-.PHONY : SigmoidLayer.cpp.i
+layer/SigmoidLayer.cpp.i:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/layer/SigmoidLayer.cpp.i
+.PHONY : layer/SigmoidLayer.cpp.i
 
-SigmoidLayer.s: SigmoidLayer.cpp.s
+layer/SigmoidLayer.s: layer/SigmoidLayer.cpp.s
 
-.PHONY : SigmoidLayer.s
-
-# target to generate assembly for a file
-SigmoidLayer.cpp.s:
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/SigmoidLayer.cpp.s
-.PHONY : SigmoidLayer.cpp.s
-
-SigmoidNeuron.o: SigmoidNeuron.cpp.o
-
-.PHONY : SigmoidNeuron.o
-
-# target to build an object file
-SigmoidNeuron.cpp.o:
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/SigmoidNeuron.cpp.o
-.PHONY : SigmoidNeuron.cpp.o
-
-SigmoidNeuron.i: SigmoidNeuron.cpp.i
-
-.PHONY : SigmoidNeuron.i
-
-# target to preprocess a source file
-SigmoidNeuron.cpp.i:
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/SigmoidNeuron.cpp.i
-.PHONY : SigmoidNeuron.cpp.i
-
-SigmoidNeuron.s: SigmoidNeuron.cpp.s
-
-.PHONY : SigmoidNeuron.s
+.PHONY : layer/SigmoidLayer.s
 
 # target to generate assembly for a file
-SigmoidNeuron.cpp.s:
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/SigmoidNeuron.cpp.s
-.PHONY : SigmoidNeuron.cpp.s
+layer/SigmoidLayer.cpp.s:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/layer/SigmoidLayer.cpp.s
+.PHONY : layer/SigmoidLayer.cpp.s
 
 main.o: main.cpp.o
 
@@ -339,6 +258,114 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+neural_network/NeuralNetwork.o: neural_network/NeuralNetwork.cpp.o
+
+.PHONY : neural_network/NeuralNetwork.o
+
+# target to build an object file
+neural_network/NeuralNetwork.cpp.o:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/neural_network/NeuralNetwork.cpp.o
+.PHONY : neural_network/NeuralNetwork.cpp.o
+
+neural_network/NeuralNetwork.i: neural_network/NeuralNetwork.cpp.i
+
+.PHONY : neural_network/NeuralNetwork.i
+
+# target to preprocess a source file
+neural_network/NeuralNetwork.cpp.i:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/neural_network/NeuralNetwork.cpp.i
+.PHONY : neural_network/NeuralNetwork.cpp.i
+
+neural_network/NeuralNetwork.s: neural_network/NeuralNetwork.cpp.s
+
+.PHONY : neural_network/NeuralNetwork.s
+
+# target to generate assembly for a file
+neural_network/NeuralNetwork.cpp.s:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/neural_network/NeuralNetwork.cpp.s
+.PHONY : neural_network/NeuralNetwork.cpp.s
+
+neuron/LinearNeuron.o: neuron/LinearNeuron.cpp.o
+
+.PHONY : neuron/LinearNeuron.o
+
+# target to build an object file
+neuron/LinearNeuron.cpp.o:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/neuron/LinearNeuron.cpp.o
+.PHONY : neuron/LinearNeuron.cpp.o
+
+neuron/LinearNeuron.i: neuron/LinearNeuron.cpp.i
+
+.PHONY : neuron/LinearNeuron.i
+
+# target to preprocess a source file
+neuron/LinearNeuron.cpp.i:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/neuron/LinearNeuron.cpp.i
+.PHONY : neuron/LinearNeuron.cpp.i
+
+neuron/LinearNeuron.s: neuron/LinearNeuron.cpp.s
+
+.PHONY : neuron/LinearNeuron.s
+
+# target to generate assembly for a file
+neuron/LinearNeuron.cpp.s:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/neuron/LinearNeuron.cpp.s
+.PHONY : neuron/LinearNeuron.cpp.s
+
+neuron/Neuron.o: neuron/Neuron.cpp.o
+
+.PHONY : neuron/Neuron.o
+
+# target to build an object file
+neuron/Neuron.cpp.o:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/neuron/Neuron.cpp.o
+.PHONY : neuron/Neuron.cpp.o
+
+neuron/Neuron.i: neuron/Neuron.cpp.i
+
+.PHONY : neuron/Neuron.i
+
+# target to preprocess a source file
+neuron/Neuron.cpp.i:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/neuron/Neuron.cpp.i
+.PHONY : neuron/Neuron.cpp.i
+
+neuron/Neuron.s: neuron/Neuron.cpp.s
+
+.PHONY : neuron/Neuron.s
+
+# target to generate assembly for a file
+neuron/Neuron.cpp.s:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/neuron/Neuron.cpp.s
+.PHONY : neuron/Neuron.cpp.s
+
+neuron/SigmoidNeuron.o: neuron/SigmoidNeuron.cpp.o
+
+.PHONY : neuron/SigmoidNeuron.o
+
+# target to build an object file
+neuron/SigmoidNeuron.cpp.o:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/neuron/SigmoidNeuron.cpp.o
+.PHONY : neuron/SigmoidNeuron.cpp.o
+
+neuron/SigmoidNeuron.i: neuron/SigmoidNeuron.cpp.i
+
+.PHONY : neuron/SigmoidNeuron.i
+
+# target to preprocess a source file
+neuron/SigmoidNeuron.cpp.i:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/neuron/SigmoidNeuron.cpp.i
+.PHONY : neuron/SigmoidNeuron.cpp.i
+
+neuron/SigmoidNeuron.s: neuron/SigmoidNeuron.cpp.s
+
+.PHONY : neuron/SigmoidNeuron.s
+
+# target to generate assembly for a file
+neuron/SigmoidNeuron.cpp.s:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/neuron/SigmoidNeuron.cpp.s
+.PHONY : neuron/SigmoidNeuron.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -348,30 +375,33 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... main"
-	@echo "... Layer.o"
-	@echo "... Layer.i"
-	@echo "... Layer.s"
-	@echo "... LinearLayer.o"
-	@echo "... LinearLayer.i"
-	@echo "... LinearLayer.s"
-	@echo "... LinearNeuron.o"
-	@echo "... LinearNeuron.i"
-	@echo "... LinearNeuron.s"
-	@echo "... NeuralNetwork.o"
-	@echo "... NeuralNetwork.i"
-	@echo "... NeuralNetwork.s"
-	@echo "... Neuron.o"
-	@echo "... Neuron.i"
-	@echo "... Neuron.s"
-	@echo "... SigmoidLayer.o"
-	@echo "... SigmoidLayer.i"
-	@echo "... SigmoidLayer.s"
-	@echo "... SigmoidNeuron.o"
-	@echo "... SigmoidNeuron.i"
-	@echo "... SigmoidNeuron.s"
+	@echo "... dataset/Dataset.o"
+	@echo "... dataset/Dataset.i"
+	@echo "... dataset/Dataset.s"
+	@echo "... layer/Layer.o"
+	@echo "... layer/Layer.i"
+	@echo "... layer/Layer.s"
+	@echo "... layer/LinearLayer.o"
+	@echo "... layer/LinearLayer.i"
+	@echo "... layer/LinearLayer.s"
+	@echo "... layer/SigmoidLayer.o"
+	@echo "... layer/SigmoidLayer.i"
+	@echo "... layer/SigmoidLayer.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... neural_network/NeuralNetwork.o"
+	@echo "... neural_network/NeuralNetwork.i"
+	@echo "... neural_network/NeuralNetwork.s"
+	@echo "... neuron/LinearNeuron.o"
+	@echo "... neuron/LinearNeuron.i"
+	@echo "... neuron/LinearNeuron.s"
+	@echo "... neuron/Neuron.o"
+	@echo "... neuron/Neuron.i"
+	@echo "... neuron/Neuron.s"
+	@echo "... neuron/SigmoidNeuron.o"
+	@echo "... neuron/SigmoidNeuron.i"
+	@echo "... neuron/SigmoidNeuron.s"
 .PHONY : help
 
 

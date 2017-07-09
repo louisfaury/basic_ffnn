@@ -4,7 +4,7 @@
  */
 
 #include "LinearLayer.h"
-#include "LinearNeuron.h"
+#include "../neuron/LinearNeuron.h"
 
 LinearLayer::LinearLayer() : Layer()
 {

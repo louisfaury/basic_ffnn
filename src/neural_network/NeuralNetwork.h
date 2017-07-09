@@ -4,7 +4,7 @@
  */
 
 #include <vector>
-#include "Layer.h"
+#include "../layer/Layer.h"
 #include "Eigen/Dense"
 
 #ifndef NEURALNETWORK_H

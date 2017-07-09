@@ -4,7 +4,7 @@
  */
 
 #include "vector"
-#include "Neuron.h"
+#include "../neuron/Neuron.h"
 #include "Eigen/Dense"
 
 #ifndef LAYER_H
