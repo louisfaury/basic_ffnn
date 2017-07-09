@@ -13,16 +13,24 @@
 // alias
 using LayerArray = std::vector<Layer*>;
 using Weights = std::vector<Eigen::MatrixXd>;
+using LayerArrayIt = LayerArray::iterator;
+using WeightsIt = Weights::iterator;
 
 class NeuralNetwork
 {
 public:
     NeuralNetwork();
-    //NeuralNetwork(int depth, string cmd);
+    NeuralNetwork(int inSize, int outSize);
 
-    // TODO : add predict
+    void addHiddenLayer(Layer* layer);
+    void addOutputLayer();
+    void zeroInit();
+    void randInit(int range);
+
 
 protected:
+    int m_inSize;           // input size
+    int m_outSize;          // output size
     int m_depth;            // number of layers
     LayerArray m_layers;
     Weights m_weights;      // weights of the net

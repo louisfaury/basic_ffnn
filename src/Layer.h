@@ -22,7 +22,7 @@ public:
     ~Layer();
 
     virtual Eigen::VectorXd    getOutputs();
-    virtual void        setActivations(VectorXd aa);
+    virtual void        setActivations(Eigen::VectorXd aa);
     virtual int         getSize(){return m_size;}
     virtual void        mock() = 0;
 protected:
