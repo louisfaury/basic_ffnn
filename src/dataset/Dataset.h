@@ -22,8 +22,8 @@ public:
 
     Eigen::MatrixXd getInputs(){ return m_inputs; }
     Eigen::MatrixXd getOutputs(){ return m_outputs; }
-    int getInputSize(){ returm m_inputSize; }
-    int getOutputSize(){ returm m_outputSize; }
+    int getInputSize(){ return m_inputSize; }
+    int getOutputSize(){ return m_outputSize; }
 
 protected:
     Eigen::MatrixXd m_inputs;
