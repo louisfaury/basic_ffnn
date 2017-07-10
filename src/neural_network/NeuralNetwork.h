@@ -21,7 +21,7 @@ class NeuralNetwork
 public:
     NeuralNetwork();
     NeuralNetwork(int inSize, int outSize);
-    // TODO add destructor
+    ~NeuralNetwork();
 
     // init fcts
     void addHiddenLayer(Layer* layer);

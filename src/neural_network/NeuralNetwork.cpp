@@ -1,5 +1,6 @@
 #include "NeuralNetwork.h"
 #include <random>
+#include <ctime>
 
 using namespace Eigen;
 
@@ -9,6 +10,12 @@ NeuralNetwork::NeuralNetwork() : m_depth(0)
 
 NeuralNetwork::NeuralNetwork(int inSize, int outSize) : m_depth(0), m_inSize(inSize), m_outSize(outSize)
 {
+}
+
+NeuralNetwork::~NeuralNetwork()
+{
+    for (LayerArrayIt it = m_layers.begin(); it != m_layers.end(); it++)
+        delete(*it);
 }
 
 void NeuralNetwork::addHiddenLayer(Layer *layer)
@@ -62,7 +69,8 @@ void NeuralNetwork::randInit(int range)
         {
             for (int j=0; j<it->cols(); j++)
             {
-                val = 2*range*(std::rand()-0.5);
+                std::srand(std::time(0));
+                val = 2*range*(((float)std::rand()/RAND_MAX)-0.5);
                 (*it)(i,j) = val;
             }
         }
