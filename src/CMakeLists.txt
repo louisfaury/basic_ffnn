@@ -11,6 +11,7 @@ add_subdirectory(dataset/)
 add_subdirectory(neuron/)
 add_subdirectory(layer/)
 add_subdirectory(neural_network/)
+add_subdirectory(neural_trainer/)
 
 # adds files
 set(SRCS
