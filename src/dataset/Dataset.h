@@ -15,7 +15,7 @@ class Dataset
 public:
     Dataset();
 
-    void load(std::string fileName); // TODO
+    bool load(std::string fileName); // TODO
     Eigen::MatrixXd sample(int sampleSize); // TODO
     Eigen::MatrixXd sampleAndReplace(int sampleSize); // TODO
 
@@ -26,10 +26,11 @@ public:
     int getOutputSize(){ return m_outputSize; }
 
 protected:
-    Eigen::MatrixXd m_inputs;
-    Eigen::MatrixXd m_outputs;
+    Eigen::MatrixXd m_inputs;   // (x1,..,xN)^T
+    Eigen::MatrixXd m_outputs;  // (y1,..,yN)^T
     int m_inputSize;
     int m_outputSize;
+    int m_numSamples;
 };
 
 #endif // DATASET_H

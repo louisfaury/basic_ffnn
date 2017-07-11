@@ -9,11 +9,13 @@
 #include "iostream"
 #include "dataset/Dataset.h"
 
+// TODO : dataset class
 // TODO : trainer class
 // TODO : add bias !
 
 int main(int argc, char** argv)
 {
+    /*
     int inputSize = 1;
     int outputSize = 1;
 
@@ -32,6 +34,11 @@ int main(int argc, char** argv)
     in << 1;
 
     std::cout << "Output : " << nn.ffPredict(in) << '\n';
+    */
 
-    Dataset ds();
+    Dataset ds;
+    if ( ds.load("../src/dataset/sin_dataset.txt") )
+    {
+        // TODO
+    }
 }
