@@ -12,7 +12,6 @@
 #include <random>
 #include <ctime>
 
-// TODO : dataset class
 // TODO : trainer class
 // TODO : add bias !
 
