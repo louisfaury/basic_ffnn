@@ -1,6 +1,5 @@
 #include "NeuralNetwork.h"
 #include <random>
-#include <ctime>
 
 using namespace Eigen;
 
@@ -68,8 +67,7 @@ void NeuralNetwork::randInit(int range)
         for (int i=0; i<it->rows(); i++)
         {
             for (int j=0; j<it->cols(); j++)
-            {
-                std::srand(std::time(0));
+            {           
                 val = 2*range*(((float)std::rand()/RAND_MAX)-0.5);
                 (*it)(i,j) = val;
             }
