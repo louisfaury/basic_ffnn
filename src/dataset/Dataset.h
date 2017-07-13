@@ -15,10 +15,9 @@ class Dataset
 public:
     Dataset();
 
-    bool load(std::string fileName); // TODO
-    Eigen::MatrixXd sample(int sampleSize); // TODO
-    Eigen::MatrixXd sampleAndReplace(int sampleSize); // TODO
-
+    bool load(std::string fileName);
+    void sample(int sampleSize, Eigen::MatrixXd &inSamples, Eigen::MatrixXd &outSamples); // no replacement
+    void batch(Eigen::MatrixXd &inSamples, Eigen::MatrixXd &outSamples);
 
     Eigen::MatrixXd getInputs(){ return m_inputs; }
     Eigen::MatrixXd getOutputs(){ return m_outputs; }

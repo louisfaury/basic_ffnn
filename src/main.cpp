@@ -8,6 +8,9 @@
 #include "neural_network/NeuralNetwork.h"
 #include "iostream"
 #include "dataset/Dataset.h"
+#include <string>
+#include <random>
+#include <ctime>
 
 // TODO : dataset class
 // TODO : trainer class
@@ -15,6 +18,7 @@
 
 int main(int argc, char** argv)
 {
+    srand(time(0));
     /*
     int inputSize = 1;
     int outputSize = 1;
@@ -36,9 +40,17 @@ int main(int argc, char** argv)
     std::cout << "Output : " << nn.ffPredict(in) << '\n';
     */
 
+    std::string sinDataFile = "../src/dataset/sin_dataset.txt";
     Dataset ds;
-    if ( ds.load("../src/dataset/sin_dataset.txt") )
+    if ( ds.load(sinDataFile) )
     {
-        // TODO
+        std::cout << "Success loading data" << "\n";
+        int sampleSize = 5;
+        Eigen::MatrixXd in(sampleSize,ds.getInputSize());
+        Eigen::MatrixXd out(sampleSize,ds.getOutputSize());
+        ds.sample(sampleSize, in, out);
+        std::cout << in <<'\n' << '\n';
+        ds.sample(sampleSize,in,out);
+        std::cout << in <<'\n';
     }
 }

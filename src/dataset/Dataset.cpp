@@ -6,6 +6,7 @@
 #include "Dataset.h"
 #include <fstream>
 #include <sstream>
+#include <vector>
 
 Dataset::Dataset() : m_inputSize(0), m_outputSize(0)
 {    
@@ -71,5 +72,41 @@ bool Dataset::load(std::__cxx11::string fileName)
         }
     }
     return res;
+}
+
+void Dataset::sample(int sampleSize, Eigen::MatrixXd& inSamples, Eigen::MatrixXd& outSamples)
+{
+
+    if (sampleSize > m_numSamples)
+    {
+        printf("Sample size greater than avalaible samples");
+        assert(false);
+    }
+    else
+    {
+        if (sampleSize == m_numSamples)
+        {   // batch
+            inSamples = m_inputs;
+            outSamples = m_outputs;
+        }
+        else
+        {
+            std::vector<int> fullVector;
+            for (int i=0; i<m_numSamples; i++)
+                fullVector.push_back(i);
+            // not best method but simple :
+            std::random_shuffle(fullVector.begin(), fullVector.end() );
+            for (int i=0; i<sampleSize; i++)
+            {
+                inSamples.block(i,0,1,m_inputSize) = m_inputs.block(fullVector.at(i),0,1,m_inputSize);
+                outSamples.block(i,0,1,m_outputSize) = m_outputs.block(fullVector.at(i),0,1,m_outputSize);
+            }
+        }
+    }
+}
+
+void Dataset::batch(Eigen::MatrixXd &inSamples, Eigen::MatrixXd &outSamples)
+{
+    sample(m_numSamples,inSamples,outSamples);
 }
 
