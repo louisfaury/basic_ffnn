@@ -5,6 +5,7 @@
 
 #include <vector>
 #include "../layer/Layer.h"
+#include "../neural_trainer/NeuralTrainer.h"
 #include "Eigen/Dense"
 
 #ifndef NEURALNETWORK_H
@@ -22,6 +23,7 @@ public:
     NeuralNetwork();
     NeuralNetwork(int inSize, int outSize);
     ~NeuralNetwork();
+    void linkTrainer(NeuralTrainer* nt){ m_trainer = nt; }
 
     // init fcts
     void addHiddenLayer(Layer* layer);
@@ -38,6 +40,7 @@ protected:
     int m_depth;            // number of layers
     LayerArray m_layers;
     Weights m_weights;      // weights of the net
+    NeuralTrainer* m_trainer;
 };
 
 #endif // NEURALNETWORK_H

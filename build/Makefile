@@ -285,6 +285,33 @@ neural_network/NeuralNetwork.cpp.s:
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/neural_network/NeuralNetwork.cpp.s
 .PHONY : neural_network/NeuralNetwork.cpp.s
 
+neural_trainer/NeuralTrainer.o: neural_trainer/NeuralTrainer.cpp.o
+
+.PHONY : neural_trainer/NeuralTrainer.o
+
+# target to build an object file
+neural_trainer/NeuralTrainer.cpp.o:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/neural_trainer/NeuralTrainer.cpp.o
+.PHONY : neural_trainer/NeuralTrainer.cpp.o
+
+neural_trainer/NeuralTrainer.i: neural_trainer/NeuralTrainer.cpp.i
+
+.PHONY : neural_trainer/NeuralTrainer.i
+
+# target to preprocess a source file
+neural_trainer/NeuralTrainer.cpp.i:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/neural_trainer/NeuralTrainer.cpp.i
+.PHONY : neural_trainer/NeuralTrainer.cpp.i
+
+neural_trainer/NeuralTrainer.s: neural_trainer/NeuralTrainer.cpp.s
+
+.PHONY : neural_trainer/NeuralTrainer.s
+
+# target to generate assembly for a file
+neural_trainer/NeuralTrainer.cpp.s:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/neural_trainer/NeuralTrainer.cpp.s
+.PHONY : neural_trainer/NeuralTrainer.cpp.s
+
 neuron/LinearNeuron.o: neuron/LinearNeuron.cpp.o
 
 .PHONY : neuron/LinearNeuron.o
@@ -393,6 +420,9 @@ help:
 	@echo "... neural_network/NeuralNetwork.o"
 	@echo "... neural_network/NeuralNetwork.i"
 	@echo "... neural_network/NeuralNetwork.s"
+	@echo "... neural_trainer/NeuralTrainer.o"
+	@echo "... neural_trainer/NeuralTrainer.i"
+	@echo "... neural_trainer/NeuralTrainer.s"
 	@echo "... neuron/LinearNeuron.o"
 	@echo "... neuron/LinearNeuron.i"
 	@echo "... neuron/LinearNeuron.s"
