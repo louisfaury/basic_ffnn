@@ -10,6 +10,8 @@
 #ifndef NEURALTRAINER_H
 #define NEURALTRAINER_H
 
+class NeuralNetwork; // feed-forward declaration
+
 namespace Opt_na
 {
     enum class Cost_en
@@ -25,24 +27,27 @@ namespace Opt_na
     };
 }
 
+
 struct Options
 {   // option index
     int cost;
     int opt;
 };
 
+
 class NeuralTrainer
 {
 public:
     NeuralTrainer();
 
-    void addData(std::string dataFileName); // TODO
-    void setCostFonction(int costFctIdx); // TODO
+    void addData(std::string dataFileName);
+    void setCostFonction(int costFctIdx);
     void setOptimizationTools(int optiOptIdx); // TODO
 
+    void train(NeuralNetwork* net); // TODO
 protected:
-    Dataset ds;
-    Options opt;
+    Dataset m_ds;
+    Options m_opt;
 };
 
 #endif // NEURALTRAINER_H
