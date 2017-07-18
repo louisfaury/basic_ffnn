@@ -19,8 +19,6 @@ public:
     void sample(int sampleSize, Eigen::MatrixXd &inSamples, Eigen::MatrixXd &outSamples); // no replacement
     void batch(Eigen::MatrixXd &inSamples, Eigen::MatrixXd &outSamples);
 
-    Eigen::MatrixXd getInputs(){ return m_inputs; }
-    Eigen::MatrixXd getOutputs(){ return m_outputs; }
     int getInputSize(){ return m_inputSize; }
     int getOutputSize(){ return m_outputSize; }
 

@@ -8,7 +8,7 @@
 #include <sstream>
 #include <vector>
 
-Dataset::Dataset() : m_inputSize(0), m_outputSize(0)
+Dataset::Dataset() : m_inputSize(0), m_outputSize(0), m_numSamples(0)
 {    
 }
 
