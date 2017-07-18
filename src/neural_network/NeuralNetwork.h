@@ -23,7 +23,6 @@ public:
     NeuralNetwork();
     NeuralNetwork(int inSize, int outSize);
     ~NeuralNetwork();
-    void linkTrainer(NeuralTrainer* nt){ m_trainer = nt; }
 
     // init fcts
     void addHiddenLayer(Layer* layer);
@@ -34,13 +33,15 @@ public:
     // predict fct
     Eigen::VectorXd ffPredict(Eigen::VectorXd in); // feed-forward prediction
 
+    // train fct
+    bool fbTrain(NeuralTrainer* neTrain);
+
 protected:
     int m_inSize;           // input size
     int m_outSize;          // output size
     int m_depth;            // number of layers
     LayerArray m_layers;
     Weights m_weights;      // weights of the net
-    NeuralTrainer* m_trainer;
 };
 
 #endif // NEURALNETWORK_H

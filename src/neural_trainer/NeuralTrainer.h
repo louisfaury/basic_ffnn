@@ -42,7 +42,7 @@ public:
 
     void addData(std::string dataFileName);
     void setCostFonction(int costFctIdx);
-    void setOptimizationTools(int optiOptIdx); // TODO
+    void setOptimizationTools(int optiOptIdx);
 
     void train(NeuralNetwork* net); // TODO
 protected:
