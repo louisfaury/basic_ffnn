@@ -21,6 +21,7 @@ public:
 
     int getInputSize(){ return m_inputSize; }
     int getOutputSize(){ return m_outputSize; }
+    int getSampleSize(){ return m_numSamples; }
 
 protected:
     Eigen::MatrixXd m_inputs;   // (x1,..,xN)^T

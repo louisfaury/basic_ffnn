@@ -33,9 +33,6 @@ public:
     // predict fct
     Eigen::VectorXd ffPredict(Eigen::VectorXd in); // feed-forward prediction
 
-    // train fct
-    bool fbTrain(NeuralTrainer* neTrain);
-
 protected:
     int m_inSize;           // input size
     int m_outSize;          // output size

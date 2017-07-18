@@ -101,4 +101,10 @@ VectorXd NeuralNetwork::ffPredict(VectorXd in)
     }
 }
 
+bool NeuralNetwork::fbTrain(NeuralTrainer *neTrain)
+{
+    bool res = false; // success flag
+
+}
+
 

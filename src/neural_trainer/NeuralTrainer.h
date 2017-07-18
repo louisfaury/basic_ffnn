@@ -32,6 +32,8 @@ struct Options
 {   // option index
     int cost;
     int opt;
+    int mbSize; // size of minibatch
+    int maxIter;
 };
 
 
@@ -43,6 +45,8 @@ public:
     void addData(std::string dataFileName);
     void setCostFonction(int costFctIdx);
     void setOptimizationTools(int optiOptIdx);
+    void setMiniBatchSize(uint mbSize);
+    void setMaxIter(uint maxIter){ m_opt.maxIter = maxIter; }
 
     void train(NeuralNetwork* net); // TODO
 protected:

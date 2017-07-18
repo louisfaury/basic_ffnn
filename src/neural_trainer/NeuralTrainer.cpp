@@ -37,3 +37,13 @@ void NeuralTrainer::setOptimizationTools(int optiOptIdx)
     m_opt.opt = optiOptIdx;
 }
 
+void NeuralTrainer::setMiniBatchSize(uint mbSize /* 0 if batch, else minibatch size - set to batch if > then the dataset size*/)
+{
+    if (mbSize==0 || mbSize >= m_ds.getSampleSize())
+    {
+        m_opt.mbSize = m_ds.getSampleSize();
+    }
+    else
+        m_opt.mbSize = mbSize;
+}
+
