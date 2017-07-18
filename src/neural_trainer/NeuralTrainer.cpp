@@ -47,3 +47,17 @@ void NeuralTrainer::setMiniBatchSize(uint mbSize /* 0 if batch, else minibatch s
         m_opt.mbSize = mbSize;
 }
 
+void NeuralTrainer::train(NeuralNetwork *net)
+{
+    // TODO
+
+    // outer loop : for i=1:maxIter
+
+    // inner loop :
+    // init gradient
+    // sample minibatch
+    // for every sample in the minibatch, compute the gradient via backprop
+    // add to current gradient
+    // update the current estimate according to option (constant learning rate, momentum, ..)
+}
+
