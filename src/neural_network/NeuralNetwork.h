@@ -33,6 +33,11 @@ public:
     // predict fct
     Eigen::VectorXd ffPredict(Eigen::VectorXd in); // feed-forward prediction
 
+    // others
+    int getVectorSize(); // returns the size of the nn weight parameter
+    Eigen::VectorXd net2Vec();
+    void vec2Net(Eigen::VectorXd w);
+
 protected:
     int m_inSize;           // input size
     int m_outSize;          // output size
