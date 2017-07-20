@@ -5,8 +5,11 @@
  */
 
 #include "NeuralTrainer.h"
+#include "../neural_network/NeuralNetwork.h"
+#include "Eigen/Core"
 
 using namespace Opt_na;
+using namespace Eigen;
 
 NeuralTrainer::NeuralTrainer()
 {
@@ -49,15 +52,33 @@ void NeuralTrainer::setMiniBatchSize(uint mbSize /* 0 if batch, else minibatch s
 
 void NeuralTrainer::train(NeuralNetwork *net)
 {
-    // TODO
+    // options
+    int maxIter = m_opt.maxIter;
+    int cost    = m_opt.cost;
+    int opti    = m_opt.opt;
+    int mbSize  = m_opt.mbSize;
+    int inS     = m_ds.getInputSize();
+    int outS    = m_ds.getOutputSize();
 
-    // outer loop : for i=1:maxIter
+    // csts
+    int wSize = net->getVectorSize();   // nn parameter size
+    VectorXd w = net->net2Vec();        // parameter initialization
+    VectorXd dW(wSize);                 // gradient declaration
+    MatrixXd X(mbSize,inS);
+    MatrixXd y(mbSize,outS);
 
-    // inner loop :
-    // init gradient
-    // sample minibatch
-    // for every sample in the minibatch, compute the gradient via backprop
-    // add to current gradient
-    // update the current estimate according to option (constant learning rate, momentum, ..)
+    // training
+    for (int i=0; i<maxIter; i++)
+    {
+        m_ds.sample(mbSize,X,y); // mini-batch sampling
+        for (int m=0; m<mbSize; m++)
+        {
+            dW.setZero();
+            // TODO
+            // for every sample in the minibatch, compute the gradient via backprop (should be a fonction of nn given a terminal error)
+            // add to current gradient
+            // update the current estimate according to option (constant learning rate, momentum, ..)
+        }
+    }
 }
 
