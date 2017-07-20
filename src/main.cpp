@@ -18,20 +18,28 @@
 int main(int argc, char** argv)
 {
     srand(time(0));
-    /*
+
+    /* Testing nn */
     int inputSize = 1;
     int outputSize = 1;
 
     NeuralNetwork nn = NeuralNetwork(inputSize,outputSize);
     // defining hidden layers
-    SigmoidLayer* in2hid = new SigmoidLayer(100);
+    SigmoidLayer* in2hid = new SigmoidLayer(10);
     // adding hidden layers
     nn.addHiddenLayer(in2hid);
     // adding output layer
     nn.addOutputLayer();
     // weight init.
-    nn.zeroInit();
+    nn.randInit(1);
 
+    std::cout << nn.net2Vec() << std::endl;
+    Eigen::VectorXd t(nn.getVectorSize());
+    t.setZero();
+    nn.vec2Net(t);
+    std::cout << "\n" << nn.net2Vec() << std::endl;
+
+    /*
     // prediction
     Eigen::Matrix<double,1,1> in;
     in << 1;
@@ -39,6 +47,8 @@ int main(int argc, char** argv)
     std::cout << "Output : " << nn.ffPredict(in) << '\n';
     */
 
+    /* Testing dataset */
+    /*
     std::string sinDataFile = "../src/dataset/sin_dataset.txt";
     Dataset ds;
     if ( ds.load(sinDataFile) )
@@ -52,4 +62,5 @@ int main(int argc, char** argv)
         ds.sample(sampleSize,in,out);
         std::cout << in <<'\n';
     }
+*/
 }
