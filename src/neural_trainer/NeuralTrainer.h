@@ -32,8 +32,6 @@ struct Options
 {   // option index
     int cost;
     int opt;
-    int mbSize; // size of minibatch
-    int maxIter;
 };
 
 
@@ -46,12 +44,17 @@ public:
     void setCostFonction(int costFctIdx);
     void setOptimizationTools(int optiOptIdx);
     void setMiniBatchSize(uint mbSize);
-    void setMaxIter(uint maxIter){ m_opt.maxIter = maxIter; }
+    void setMaxIter(uint maxIter){ m_maxIter = maxIter; }
+    void setLearningRate(double lr){ m_lr = lr; }
 
     void train(NeuralNetwork* net); // TODO
 protected:
     Dataset m_ds;
     Options m_opt;
+    int m_maxIter;
+    int m_mbSize;
+    int m_lr;
+
 };
 
 #endif // NEURALTRAINER_H
