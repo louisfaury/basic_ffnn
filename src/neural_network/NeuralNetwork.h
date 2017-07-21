@@ -31,7 +31,10 @@ public:
     void randInit(int range);
 
     // predict fct
-    Eigen::VectorXd ffPredict(Eigen::VectorXd in); // feed-forward prediction
+    Eigen::VectorXd feedForward(Eigen::VectorXd in); // feed-forward prediction
+
+    // backprop
+    Eigen::VectorXd backPropagate(Eigen::VectorXd diff);
 
     // others
     int getVectorSize(); // returns the size of the nn weight parameter
@@ -39,6 +42,7 @@ public:
     void vec2Net(Eigen::VectorXd w);
 
 protected:
+
     int m_inSize;           // input size
     int m_outSize;          // output size
     int m_depth;            // number of layers

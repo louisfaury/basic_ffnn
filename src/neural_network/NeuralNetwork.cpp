@@ -75,7 +75,7 @@ void NeuralNetwork::randInit(int range)
     }
 }
 
-VectorXd NeuralNetwork::ffPredict(VectorXd in)
+VectorXd NeuralNetwork::feedForward(VectorXd in)
 {
     VectorXd out(m_outSize);
     if (in.rows() != m_inSize)
@@ -99,6 +99,11 @@ VectorXd NeuralNetwork::ffPredict(VectorXd in)
         out = hid;
         return out;
     }
+}
+
+VectorXd NeuralNetwork::backPropagate(VectorXd diff)
+{
+    /// TODO
 }
 
 int NeuralNetwork::getVectorSize()
