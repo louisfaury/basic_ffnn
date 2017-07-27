@@ -23,6 +23,8 @@ namespace Opt_na
     {
         classic =0, // Nothing fancy
         momentum,
+        adagrad,
+        rmsprop,
         adam
     };
 }

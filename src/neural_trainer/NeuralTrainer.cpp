@@ -68,6 +68,7 @@ void NeuralTrainer::train(NeuralNetwork *net)
     VectorXd X1(inS);
     VectorXd y1(outS);
     VectorXd diff(outS);
+
     // training
     for (int i=0; i<m_maxIter; i++)
     {
