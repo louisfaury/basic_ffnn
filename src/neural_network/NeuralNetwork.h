@@ -15,7 +15,9 @@
 using LayerArray = std::vector<Layer*>;
 using Weights = std::vector<Eigen::MatrixXd>;
 using LayerArrayIt = LayerArray::iterator;
+using LayerArrayRIt = LayerArray::reverse_iterator;
 using WeightsIt = Weights::iterator;
+using WeightsRIt = Weights::reverse_iterator;
 
 class NeuralNetwork
 {
