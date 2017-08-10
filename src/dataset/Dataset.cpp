@@ -106,7 +106,7 @@ void Dataset::sample(int sampleSize, Eigen::MatrixXd& inSamples, Eigen::MatrixXd
     }
 }
 
-void Dataset::split(int ttRatio, SubDataset &trainSet, SubDataset &testSet)
+void Dataset::split(double ttRatio, SubDataset &trainSet, SubDataset &testSet)
 {
     // sanity check
     assert( (ttRatio>0. && ttRatio<1) );
@@ -140,7 +140,7 @@ void Dataset::split(int ttRatio, SubDataset &trainSet, SubDataset &testSet)
 
     // copying to subdatasets
     trainSet.copyData(trainSize,m_inputSize,m_outputSize,inputTrain,outputTrain);
-    trainSet.copyData(testSize,m_inputSize,m_outputSize,inputTest,outputTest);
+    testSet.copyData(testSize,m_inputSize,m_outputSize,inputTest,outputTest);
 }
 
 void Dataset::batch(Eigen::MatrixXd &inSamples, Eigen::MatrixXd &outSamples)

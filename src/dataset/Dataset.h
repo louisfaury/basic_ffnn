@@ -19,7 +19,7 @@ public:
 
     bool load(std::string fileName);
     virtual void sample(int sampleSize, Eigen::MatrixXd &inSamples, Eigen::MatrixXd &outSamples); // no replacement
-    void split(int ttRatio, SubDataset& trainSet, SubDataset& testSet);
+    void split(double ttRatio, SubDataset& trainSet, SubDataset& testSet);
     virtual void batch(Eigen::MatrixXd &inSamples, Eigen::MatrixXd &outSamples);
 
     virtual int getInputSize(){ return m_inputSize; }

@@ -33,7 +33,7 @@ public:
     void randInit(int range);
 
     // predict fct
-    Eigen::VectorXd feedForward(Eigen::VectorXd in); // feed-forward prediction
+    Eigen::VectorXd feedForward(Eigen::VectorXd input); // feed-forward prediction
 
     // backprop
     Eigen::VectorXd backPropagate(Eigen::VectorXd diff);

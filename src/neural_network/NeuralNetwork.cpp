@@ -1,5 +1,6 @@
 #include "NeuralNetwork.h"
 #include <random>
+#include "../layer/LinearLayer.h"
 
 using namespace Eigen;
 
@@ -9,6 +10,8 @@ NeuralNetwork::NeuralNetwork() : m_depth(0)
 
 NeuralNetwork::NeuralNetwork(int inSize, int outSize) : m_depth(0), m_inSize(inSize), m_outSize(outSize)
 {
+    LinearLayer* inputLayer = new LinearLayer(m_inSize);
+    m_layers.push_back(inputLayer);
 }
 
 NeuralNetwork::~NeuralNetwork()
@@ -43,12 +46,15 @@ void NeuralNetwork::addHiddenLayer(Layer *layer)
 
 void NeuralNetwork::addOutputLayer()
 {
-    Layer* prevLayer = m_layers.at(m_depth-1);
+    Layer* prevLayer = m_layers.at(m_depth);
     int rows = m_outSize;
     int cols = prevLayer->getSize();
 
     MatrixXd w(rows,cols);
     m_weights.push_back(w);
+
+    LinearLayer* outputLayer = new LinearLayer(m_outSize);
+    m_layers.push_back(outputLayer);
 }
 
 void NeuralNetwork::zeroInit()
@@ -75,10 +81,11 @@ void NeuralNetwork::randInit(int range)
     }
 }
 
-VectorXd NeuralNetwork::feedForward(VectorXd in)
+VectorXd NeuralNetwork::feedForward(VectorXd input)
 {
     VectorXd out(m_outSize);
-    if (in.rows() != m_inSize)
+    VectorXd in(m_inSize);
+    if (input.rows() != m_inSize)
     {
         printf("Wrong input size : %i vs %i\n",(int)in.rows(),m_inSize);
     }
@@ -87,6 +94,11 @@ VectorXd NeuralNetwork::feedForward(VectorXd in)
         WeightsIt wit = m_weights.begin();
         LayerArrayIt lit = m_layers.begin();
 
+        // init
+        (*lit)->setActivations(input);
+        in = (*lit)->getOutputs();
+        lit++;
+
         // feed-forward
         VectorXd hid = (*wit)*in;
         for (int d=0; d<m_depth; d++)
@@ -94,9 +106,10 @@ VectorXd NeuralNetwork::feedForward(VectorXd in)
             wit++;
             (*lit)->setActivations(hid);
             hid = (*wit)*((*lit)->getOutputs());
+            lit++;
         }
 
-        out = hid;
+        out = (*lit)->getOutputs();
         return out;
     }
 }
@@ -108,23 +121,29 @@ VectorXd NeuralNetwork::backPropagate(VectorXd diff)
     VectorXd grad(size);
     VectorXd delta= diff;
     WeightsRIt writ = m_weights.rbegin();
+    LayerArrayRIt lrit = m_layers.rbegin();
+    lrit++;
 
-    for (LayerArrayRIt rit = m_layers.rbegin(); rit != m_layers.rend(); rit++)
+    for (int d=0; d<m_depth+1; d++)
     {
         // gradient computation, layer by layer
-        VectorXd z = (*rit)->getOutputs();
-        for (int i=0; i<delta.cols(); i++)
+        VectorXd z = (*lrit)->getOutputs();
+        for (int i=0; i<delta.rows(); i++)
         {
-            grad.block(size-idx-(i+1)*z.cols(),1,z.cols(),1) = z*delta(i);
+            grad.block(size-idx-(i+1)*z.rows(),0,z.rows(),1) = z*delta(i);
         }
-        idx += delta.cols()*z.cols();
+        idx += delta.rows()*z.rows();
 
         // delta backprop
-        VectorXd tmp = (*writ)*delta; /// transpose ? 
+        MatrixXd w = *writ;
+        MatrixXd tmp = (w.transpose())*delta;
         delta = VectorXd(z.cols());
-        delta = tmp * (*rit)->getDerivativeActivations();
+        delta = tmp.cwiseProduct((*lrit)->getDerivativeActivations());
         writ++;
+        lrit++;
     }
+
+
 
     return grad;
 }
