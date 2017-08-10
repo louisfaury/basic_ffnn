@@ -10,18 +10,21 @@
 #ifndef DATASET_H
 #define DATASET_H
 
+class SubDataset; // forward declaration
+
 class Dataset
 {
 public:
     Dataset();
 
     bool load(std::string fileName);
-    void sample(int sampleSize, Eigen::MatrixXd &inSamples, Eigen::MatrixXd &outSamples); // no replacement
-    void batch(Eigen::MatrixXd &inSamples, Eigen::MatrixXd &outSamples);
+    virtual void sample(int sampleSize, Eigen::MatrixXd &inSamples, Eigen::MatrixXd &outSamples); // no replacement
+    void split(int ttRatio, SubDataset& trainSet, SubDataset& testSet);
+    virtual void batch(Eigen::MatrixXd &inSamples, Eigen::MatrixXd &outSamples);
 
-    int getInputSize(){ return m_inputSize; }
-    int getOutputSize(){ return m_outputSize; }
-    int getSampleSize(){ return m_numSamples; }
+    virtual int getInputSize(){ return m_inputSize; }
+    virtual int getOutputSize(){ return m_outputSize; }
+    virtual int getSampleSize(){ return m_numSamples; }
 
 protected:
     Eigen::MatrixXd m_inputs;   // (x1,..,xN)^T

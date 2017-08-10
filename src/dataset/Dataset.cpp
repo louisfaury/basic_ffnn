@@ -7,6 +7,7 @@
 #include <fstream>
 #include <sstream>
 #include <vector>
+#include "SubDataset.h"
 
 Dataset::Dataset() : m_inputSize(0), m_outputSize(0), m_numSamples(0)
 {    
@@ -103,6 +104,43 @@ void Dataset::sample(int sampleSize, Eigen::MatrixXd& inSamples, Eigen::MatrixXd
             }
         }
     }
+}
+
+void Dataset::split(int ttRatio, SubDataset &trainSet, SubDataset &testSet)
+{
+    // sanity check
+    assert( (ttRatio>0. && ttRatio<1) );
+
+    // proceed
+    int trainSize = ttRatio*m_numSamples;
+    int testSize = m_numSamples - trainSize;
+    Eigen::MatrixXd inputTrain(trainSize,m_inputSize);
+    Eigen::MatrixXd inputTest(testSize,m_inputSize);
+    Eigen::MatrixXd outputTrain(trainSize,m_outputSize);
+    Eigen::MatrixXd outputTest(testSize,m_outputSize);
+
+    std::vector<int> fullVector;
+    for (int i=0; i<m_numSamples; i++)
+        fullVector.push_back(i);
+    // not best method but simple :
+    std::random_shuffle(fullVector.begin(), fullVector.end() );
+    for (int i=0; i<m_numSamples; i++)
+    {
+        if (i<trainSize)
+        {
+            inputTrain.block(i,0,1,m_inputSize) = m_inputs.block(fullVector.at(i),0,1,m_inputSize);
+            outputTrain.block(i,0,1,m_outputSize) = m_outputs.block(fullVector.at(i),0,1,m_outputSize);
+        }
+        else
+        {
+            inputTest.block(i-trainSize,0,1,m_inputSize) = m_inputs.block(fullVector.at(i),0,1,m_inputSize);
+            outputTest.block(i-trainSize,0,1,m_outputSize) = m_outputs.block(fullVector.at(i),0,1,m_outputSize);
+        }
+    }
+
+    // copying to subdatasets
+    trainSet.copyData(trainSize,m_inputSize,m_outputSize,inputTrain,outputTrain);
+    trainSet.copyData(testSize,m_inputSize,m_outputSize,inputTest,outputTest);
 }
 
 void Dataset::batch(Eigen::MatrixXd &inSamples, Eigen::MatrixXd &outSamples)
