@@ -150,6 +150,33 @@ dataset/Dataset.cpp.s:
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/dataset/Dataset.cpp.s
 .PHONY : dataset/Dataset.cpp.s
 
+dataset/SubDataset.o: dataset/SubDataset.cpp.o
+
+.PHONY : dataset/SubDataset.o
+
+# target to build an object file
+dataset/SubDataset.cpp.o:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/dataset/SubDataset.cpp.o
+.PHONY : dataset/SubDataset.cpp.o
+
+dataset/SubDataset.i: dataset/SubDataset.cpp.i
+
+.PHONY : dataset/SubDataset.i
+
+# target to preprocess a source file
+dataset/SubDataset.cpp.i:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/dataset/SubDataset.cpp.i
+.PHONY : dataset/SubDataset.cpp.i
+
+dataset/SubDataset.s: dataset/SubDataset.cpp.s
+
+.PHONY : dataset/SubDataset.s
+
+# target to generate assembly for a file
+dataset/SubDataset.cpp.s:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/dataset/SubDataset.cpp.s
+.PHONY : dataset/SubDataset.cpp.s
+
 layer/Layer.o: layer/Layer.cpp.o
 
 .PHONY : layer/Layer.o
@@ -405,6 +432,9 @@ help:
 	@echo "... dataset/Dataset.o"
 	@echo "... dataset/Dataset.i"
 	@echo "... dataset/Dataset.s"
+	@echo "... dataset/SubDataset.o"
+	@echo "... dataset/SubDataset.i"
+	@echo "... dataset/SubDataset.s"
 	@echo "... layer/Layer.o"
 	@echo "... layer/Layer.i"
 	@echo "... layer/Layer.s"

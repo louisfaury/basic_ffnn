@@ -4,7 +4,7 @@
  * brief : Simple dataset class for data storage (NUMERICAL ATTRIBUTES ONLY !)
  */
 
-#include "../dataset/Dataset.h"
+#include "../dataset/SubDataset.h"
 #include <string>
 
 #ifndef NEURALTRAINER_H
@@ -42,16 +42,22 @@ class NeuralTrainer
 public:
     NeuralTrainer();
 
-    void addData(std::string dataFileName);
+    void addData(std::string dataFileName, double ttRatio=0.9);
     void setCostFonction(int costFctIdx);
     void setOptimizationTools(int optiOptIdx);
     void setMiniBatchSize(uint mbSize);
     void setMaxIter(uint maxIter){ m_maxIter = maxIter; }
     void setLearningRate(double lr){ m_lr = lr; }
 
-    void train(NeuralNetwork* net); // TODO
+    void train(NeuralNetwork* net);
+    double evaluateTrainLoss(NeuralNetwork* net);
+    double evaluateTestLoss(NeuralNetwork* net);
+
 protected:
-    Dataset m_ds;
+    double _evaluateLoss(NeuralNetwork* net, SubDataset ds);
+
+    SubDataset m_trainSet;
+    SubDataset m_testSet;
     Options m_opt;
     int m_maxIter;
     int m_mbSize;

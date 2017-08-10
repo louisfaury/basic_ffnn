@@ -12,7 +12,6 @@
 #include <random>
 #include <ctime>
 
-// TODO : trainer class
 // TODO : add bias !
 
 int main(int argc, char** argv)
