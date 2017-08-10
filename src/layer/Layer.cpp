@@ -37,6 +37,19 @@ VectorXd Layer::getOutputs()
     return res;
 }
 
+VectorXd Layer::getDerivativeActivations()
+{
+    VectorXd res(m_size);
+    int i(0);
+    for (NeuralArrayIt it = m_neurons.begin(); it != m_neurons.end(); it++)
+    {
+        res(i) = (*it)->getDerivativeActivation();
+        ++i;
+    }
+
+    return res;
+}
+
 void Layer::setActivations(VectorXd aa)
 {
     int size = aa.rows();

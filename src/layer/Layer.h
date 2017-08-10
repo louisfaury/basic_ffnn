@@ -21,10 +21,11 @@ public:
     Layer(int size);
     ~Layer();
 
-    virtual Eigen::VectorXd    getOutputs();
-    virtual void        setActivations(Eigen::VectorXd aa);
-    virtual int         getSize(){return m_size;}
-    virtual void        mock() = 0;
+    virtual Eigen::VectorXd getOutputs();
+    virtual Eigen::VectorXd getDerivativeActivations();
+    virtual void            setActivations(Eigen::VectorXd aa);
+    virtual int             getSize(){return m_size;}
+    virtual void            mock() = 0;
 protected:
     int m_size;
     NeuralArray m_neurons;

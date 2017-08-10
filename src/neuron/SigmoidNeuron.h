@@ -12,6 +12,7 @@ class SigmoidNeuron : public Neuron
 {
 public:
     SigmoidNeuron();
+    virtual double getDerivativeActivation();
 
 protected:
     virtual void _computeOutput();

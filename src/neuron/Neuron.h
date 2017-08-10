@@ -12,6 +12,7 @@ class Neuron
 public:
     Neuron();
     virtual double getOutput();
+    virtual double getDerivativeActivation() = 0;
     virtual double setActivation(double a){m_a = a;}
     ~Neuron();
 

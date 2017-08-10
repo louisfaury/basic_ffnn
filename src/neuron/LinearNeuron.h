@@ -13,6 +13,7 @@ class LinearNeuron : public Neuron
 {
 public:
     LinearNeuron();
+    virtual double getDerivativeActivation();
 
 protected:
     virtual void _computeOutput();

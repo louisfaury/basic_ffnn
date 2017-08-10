@@ -10,6 +10,15 @@ SigmoidNeuron::SigmoidNeuron() : Neuron()
 {
 }
 
+double SigmoidNeuron::getDerivativeActivation()
+{
+    double res;
+    double sigmoid = 1./(1+exp(-m_a));
+
+    res = sigmoid * (1-sigmoid);
+    return res;
+}
+
 void SigmoidNeuron::_computeOutput()
 {
     // sigmoidal activation function

@@ -122,7 +122,8 @@ VectorXd NeuralNetwork::backPropagate(VectorXd diff)
         // delta backprop
         VectorXd tmp = (*writ)*delta; /// transpose ? 
         delta = VectorXd(z.cols());
-        delta = tmp;
+        delta = tmp * (*rit)->getDerivativeActivations();
+        writ++;
     }
 
     return grad;
