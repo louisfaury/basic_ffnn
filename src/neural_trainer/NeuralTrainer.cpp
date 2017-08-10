@@ -7,6 +7,7 @@
 #include "NeuralTrainer.h"
 #include "../neural_network/NeuralNetwork.h"
 #include "Eigen/Core"
+#include <iostream> /// TODO REMOVE
 
 using namespace Opt_na;
 using namespace Eigen;
@@ -79,7 +80,7 @@ void NeuralTrainer::train(NeuralNetwork *net)
         dW *= 0;
         for (int m=0; m<m_mbSize; m++)
         {
-            X1 = ( X.block(m,0,inS,1) ).transpose();
+            X1 = (X.block(m,0,inS,1) ).transpose();
             y1 = (y.block(m,0,outS,1) ).transpose();
             switch (cost)
             {
@@ -98,8 +99,9 @@ void NeuralTrainer::train(NeuralNetwork *net)
         switch (opti)
         {
         case (int)Optimization_en::classic:
-            w -= m_lr*dW;
+            w -= -m_lr*dW;
             net->vec2Net(w);
+        //    std::cout << (net->net2Vec()).transpose() << std::endl;
             break;
         default:
             /// TODO
@@ -108,7 +110,7 @@ void NeuralTrainer::train(NeuralNetwork *net)
 
         trainLoss = evaluateTrainLoss(net);
         testLoss = evaluateTestLoss(net);
-        printf("Epoch %i/%i, \t loss (training) %4.4f, \t loss (testing) %4.4f",i,m_maxIter,trainLoss,testLoss);
+        printf("Epoch %i/%i, \t loss (training) %4.8f, \t loss (testing) %4.4f\n",i,m_maxIter,trainLoss,testLoss);
     }
 }
 
@@ -135,13 +137,13 @@ double NeuralTrainer::_evaluateLoss(NeuralNetwork *net, SubDataset ds)
     {
     case (int)Cost_en::SSE:
     {
-        Eigen::MatrixXd pred, ref, inSample;
+        Eigen::MatrixXd pred, ref, inSample,diff;
         for (int i=0; i<size; i++)
         {
             inSample = in.block(i,0,1,ds.getInputSize());
-            pred = net->feedForward(in);
-            out = out.block(i,0,1,ds.getOutputSize());
-            Eigen::VectorXd diff = out - pred;
+            pred = net->feedForward(inSample);
+            ref = out.block(i,0,1,ds.getOutputSize());
+            diff = ref - pred;
             res += 0.5 * diff.squaredNorm();
         }
         break;

@@ -61,7 +61,7 @@ protected:
     Options m_opt;
     int m_maxIter;
     int m_mbSize;
-    int m_lr;
+    double m_lr;
 
 };
 

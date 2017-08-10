@@ -85,9 +85,9 @@ VectorXd NeuralNetwork::feedForward(VectorXd input)
 {
     VectorXd out(m_outSize);
     VectorXd in(m_inSize);
-    if (input.rows() != m_inSize)
+    if (input.cols() != m_inSize)
     {
-        printf("Wrong input size : %i vs %i\n",(int)in.rows(),m_inSize);
+        printf("Wrong input size : %i vs %i\n",(int)input.cols(),m_inSize);
     }
     else
     {
@@ -109,6 +109,7 @@ VectorXd NeuralNetwork::feedForward(VectorXd input)
             lit++;
         }
 
+        (*lit)->setActivations(hid);
         out = (*lit)->getOutputs();
         return out;
     }
