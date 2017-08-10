@@ -7,7 +7,6 @@
 #include "NeuralTrainer.h"
 #include "../neural_network/NeuralNetwork.h"
 #include "Eigen/Core"
-#include <iostream> /// TODO REMOVE
 
 using namespace Opt_na;
 using namespace Eigen;
@@ -77,6 +76,7 @@ void NeuralTrainer::train(NeuralNetwork *net)
     for (int i=0; i<m_maxIter; i++)
     {
         m_trainSet.sample(m_mbSize,X,y); // mini-batch sampling
+        /* Computing gradient */
         dW *= 0;
         for (int m=0; m<m_mbSize; m++)
         {
@@ -95,13 +95,13 @@ void NeuralTrainer::train(NeuralNetwork *net)
             dW += dw1;
         }
         /// TODO : add gradient check !
-        // update the current estimate according to option (constant learning rate, momentum, ..)
+
+        /* Update */
         switch (opti)
         {
         case (int)Optimization_en::classic:
-            w -= -m_lr*dW;
+            w -= m_lr*dW;
             net->vec2Net(w);
-        //    std::cout << (net->net2Vec()).transpose() << std::endl;
             break;
         default:
             /// TODO

@@ -24,7 +24,7 @@ int main(int argc, char** argv)
 
     NeuralNetwork nn = NeuralNetwork(inputSize,outputSize);
     // defining hidden layers
-    SigmoidLayer* in2hid = new SigmoidLayer(5);
+    SigmoidLayer* in2hid = new SigmoidLayer(10);
     // adding hidden layers
     nn.addHiddenLayer(in2hid);
     // adding output layer
@@ -40,8 +40,8 @@ int main(int argc, char** argv)
     neuralTrainer.addData(sinDataFile);
     neuralTrainer.setCostFonction((int)Opt_na::Cost_en::SSE);
     neuralTrainer.setOptimizationTools((int)Opt_na::Optimization_en::classic);
-    neuralTrainer.setMaxIter(1000);
-    neuralTrainer.setMiniBatchSize(40);
-    neuralTrainer.setLearningRate(0.001);
+    neuralTrainer.setMaxIter(5000);
+    neuralTrainer.setMiniBatchSize(200);
+    neuralTrainer.setLearningRate(0.0001);
     neuralTrainer.train(&nn);
 }
