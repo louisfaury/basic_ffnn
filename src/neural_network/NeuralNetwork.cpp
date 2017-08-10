@@ -103,7 +103,29 @@ VectorXd NeuralNetwork::feedForward(VectorXd in)
 
 VectorXd NeuralNetwork::backPropagate(VectorXd diff)
 {
-    /// TODO
+    int size(getVectorSize());
+    int idx(0);
+    VectorXd grad(size);
+    VectorXd delta= diff;
+    WeightsRIt writ = m_weights.rbegin();
+
+    for (LayerArrayRIt rit = m_layers.rbegin(); rit != m_layers.rend(); rit++)
+    {
+        // gradient computation, layer by layer
+        VectorXd z = (*rit)->getOutputs();
+        for (int i=0; i<delta.cols(); i++)
+        {
+            grad.block(size-idx-(i+1)*z.cols(),1,z.cols(),1) = z*delta(i);
+        }
+        idx += delta.cols()*z.cols();
+
+        // delta backprop
+        VectorXd tmp = (*writ)*delta; /// transpose ? 
+        delta = VectorXd(z.cols());
+        delta = tmp;
+    }
+
+    return grad;
 }
 
 int NeuralNetwork::getVectorSize()
