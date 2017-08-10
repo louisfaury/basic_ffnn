@@ -6,8 +6,8 @@
 #include "neuron/Neuron.h"
 #include "layer/SigmoidLayer.h"
 #include "neural_network/NeuralNetwork.h"
+#include "neural_trainer/NeuralTrainer.h"
 #include "iostream"
-#include "dataset/Dataset.h"
 #include <string>
 #include <random>
 #include <ctime>
@@ -32,34 +32,15 @@ int main(int argc, char** argv)
     // weight init.
     nn.randInit(1);
 
-    std::cout << nn.net2Vec() << std::endl;
-    Eigen::VectorXd t(nn.getVectorSize());
-    t.setZero();
-    nn.vec2Net(t);
-    std::cout << "\n" << nn.net2Vec() << std::endl;
+    /* Data */
+     std::string sinDataFile = "../src/dataset/sin_dataset.txt";
 
-    /*
-    // prediction
-    Eigen::Matrix<double,1,1> in;
-    in << 1;
-
-    std::cout << "Output : " << nn.ffPredict(in) << '\n';
-    */
-
-    /* Testing dataset */
-    /*
-    std::string sinDataFile = "../src/dataset/sin_dataset.txt";
-    Dataset ds;
-    if ( ds.load(sinDataFile) )
-    {
-        std::cout << "Success loading data" << "\n";
-        int sampleSize = 5;
-        Eigen::MatrixXd in(sampleSize,ds.getInputSize());
-        Eigen::MatrixXd out(sampleSize,ds.getOutputSize());
-        ds.sample(sampleSize, in, out);
-        std::cout << in <<'\n' << '\n';
-        ds.sample(sampleSize,in,out);
-        std::cout << in <<'\n';
-    }
-*/
+    /* Neural Training */
+    NeuralTrainer neuralTrainer;
+    neuralTrainer.addData(sinDataFile);
+    neuralTrainer.setCostFonction((int)Opt_na::Cost_en::SSE);
+    neuralTrainer.setOptimizationTools((int)Opt_na::Optimization_en::classic);
+    neuralTrainer.setMaxIter(20);
+    neuralTrainer.setMiniBatchSize(20);
+    neuralTrainer.train(&nn);
 }
