@@ -131,7 +131,7 @@ VectorXd NeuralNetwork::backPropagate(VectorXd diff)
         VectorXd z = (*lrit)->getOutputs();
         for (int i=0; i<delta.rows(); i++)
         {
-            grad.block(size-idx-(i+1)*z.rows(),0,z.rows(),1) = z*delta(i);
+            grad.block(size-idx-(i+1)*z.rows(),0,z.rows(),1) = z*delta(delta.rows()-1-i);
         }
         idx += delta.rows()*z.rows();
 
