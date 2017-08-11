@@ -111,7 +111,6 @@ void NeuralTrainer::train(NeuralNetwork *net)
                 printf("Gradient computation ok. Norm error : %f\n",err);
             }
         }
-        /// TODO : add gradient check !
 
         /* Update */
         switch (opti)
@@ -190,7 +189,7 @@ VectorXd NeuralTrainer::_finiteDiffGrad(MatrixXd X, MatrixXd y, NeuralNetwork *n
         X1 = (X.block(m,0,inS,1) ).transpose();
         y1 = (y.block(m,0,outS,1) ).transpose();
 
-        // assuming SSE loss for now
+        // assuming SSE loss for now /// TODO implement others
         Eigen::VectorXd dW1(size), diff, wDw(size), e(size);
         double err, errdw;
         for (int i=0; i<size; i++)
