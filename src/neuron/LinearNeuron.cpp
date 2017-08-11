@@ -7,7 +7,7 @@ LinearNeuron::LinearNeuron() : Neuron()
 
 double LinearNeuron::getDerivativeActivation()
 {
-    return m_a;
+    return 1;
 }
 
 void LinearNeuron::_computeOutput()
