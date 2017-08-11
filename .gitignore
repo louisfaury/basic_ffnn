@@ -9,5 +9,5 @@
 /build/*
 !/build/Makefile
 !/scripts
-
+!/img
 

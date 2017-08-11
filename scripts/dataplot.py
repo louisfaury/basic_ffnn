@@ -24,8 +24,10 @@ with open(data_file) as f:
              inputs[iter,:] = L[0:inSize]
              outputs[iter,:] = L[inSize:]
         iter = iter+1
-plt.scatter(inputs,outputs)
+p1 = plt.scatter(inputs,outputs,5*np.ones(np.shape(inputs)))
 " ploting function " "TODO switch case between functions"
 x = np.linspace(-5,5,1000)
 y = np.sin(x)
-plt.plot(x,y)
+p2 = plt.plot(x,y,'r',linewidth=3)
+plt.legend(["Noisy data","Baseline function"],loc=4)
+plt.savefig('../img/data')
