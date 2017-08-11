@@ -55,6 +55,7 @@ public:
 
 protected:
     double _evaluateLoss(NeuralNetwork* net, SubDataset ds);
+    Eigen::VectorXd _finiteDiffGrad(Eigen::MatrixXd X, Eigen::MatrixXd y, NeuralNetwork* net);
 
     SubDataset m_trainSet;
     SubDataset m_testSet;

@@ -8,6 +8,8 @@
 #include "../neural_network/NeuralNetwork.h"
 #include "Eigen/Core"
 
+#define EPS 0.00001
+
 using namespace Opt_na;
 using namespace Eigen;
 
@@ -59,6 +61,7 @@ void NeuralTrainer::train(NeuralNetwork *net)
     int opti    = m_opt.opt;
     int inS     = m_trainSet.getInputSize();
     int outS    = m_trainSet.getOutputSize();
+    bool gradCheck = false;
 
     // csts
     int wSize = net->getVectorSize();   // nn parameter size
@@ -85,14 +88,28 @@ void NeuralTrainer::train(NeuralNetwork *net)
             switch (cost)
             {
             case (int)Cost_en::SSE:
-                diff = y1 - net->feedForward(X1);
+                diff = net->feedForward(X1) - y1;
                 break;
             default:
                 /// TODO
                 break;
             }
             dw1 = net->backPropagate(diff);
-            dW += dw1;
+           dW += dw1;
+        }
+        if (gradCheck)
+        {
+            MatrixXd thDw= _finiteDiffGrad(X,y,net);
+            MatrixXd dDw = thDw - dW;
+            double err = dDw.squaredNorm();
+            if (err > EPS)
+            {
+                printf("Wrong grad computation. Norm error : %f\n",err);
+            }
+            else
+            {
+                printf("Gradient computation ok. Norm error : %f\n",err);
+            }
         }
         /// TODO : add gradient check !
 
@@ -154,5 +171,44 @@ double NeuralTrainer::_evaluateLoss(NeuralNetwork *net, SubDataset ds)
     }
 
     return res;
+}
+
+VectorXd NeuralTrainer::_finiteDiffGrad(MatrixXd X, MatrixXd y, NeuralNetwork *net)
+{
+    int size = net->getVectorSize();
+    int inS  = m_trainSet.getInputSize();
+    int outS = m_trainSet.getOutputSize();
+
+    Eigen::VectorXd dW(size), dW1(size);
+    Eigen::VectorXd w = net->net2Vec();
+    VectorXd X1(inS);
+    VectorXd y1(outS);
+    dW.setZero();
+
+    for (int m=0; m<m_mbSize; m++)
+    {
+        X1 = (X.block(m,0,inS,1) ).transpose();
+        y1 = (y.block(m,0,outS,1) ).transpose();
+
+        // assuming SSE loss for now
+        Eigen::VectorXd dW1(size), diff, wDw(size), e(size);
+        double err, errdw;
+        for (int i=0; i<size; i++)
+        {
+            net->vec2Net(w);
+            e.setZero();
+            e(i,0) = EPS;
+            diff = net->feedForward(X1)-y1;
+            err = 0.5*diff.squaredNorm();
+            wDw = w + e;
+            net->vec2Net(wDw);
+            diff = net->feedForward(X1)-y1;
+            errdw = 0.5*diff.squaredNorm();
+            dW1(i,0) = (errdw - err)/EPS;
+        }
+        dW += dW1;
+    }
+
+    return dW;
 }
 

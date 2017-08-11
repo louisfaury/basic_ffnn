@@ -41,7 +41,7 @@ int main(int argc, char** argv)
     neuralTrainer.setCostFonction((int)Opt_na::Cost_en::SSE);
     neuralTrainer.setOptimizationTools((int)Opt_na::Optimization_en::classic);
     neuralTrainer.setMaxIter(5000);
-    neuralTrainer.setMiniBatchSize(200);
-    neuralTrainer.setLearningRate(0.0001);
+    neuralTrainer.setMiniBatchSize(30);
+    neuralTrainer.setLearningRate(0.001);
     neuralTrainer.train(&nn);
 }
