@@ -7,15 +7,18 @@
 #include "NeuralTrainer.h"
 #include "../neural_network/NeuralNetwork.h"
 #include "Eigen/Core"
+#include <fstream>
+#include <stdio.h>
 
 #define EPS 0.00001
 
 using namespace Opt_na;
 using namespace Eigen;
 
-NeuralTrainer::NeuralTrainer()
+NeuralTrainer::NeuralTrainer() : _NTLOGFILE("../log/learninglogs.txt")
 {
 }
+
 
 void NeuralTrainer::addData(std::__cxx11::string dataFileName, double ttRatio)
 {
@@ -127,6 +130,7 @@ void NeuralTrainer::train(NeuralNetwork *net)
         trainLoss = evaluateTrainLoss(net);
         testLoss = evaluateTestLoss(net);
         printf("Epoch %i/%i, \t loss (training) %4.8f, \t loss (testing) %4.4f\n",i,m_maxIter,trainLoss,testLoss);
+        _log(trainLoss,testLoss);
     }
 }
 
@@ -209,5 +213,15 @@ VectorXd NeuralTrainer::_finiteDiffGrad(MatrixXd X, MatrixXd y, NeuralNetwork *n
     }
 
     return dW;
+}
+
+void NeuralTrainer::_log(double trainErr, double testErr)
+{
+    int length = 20;
+    char s2log[20];
+    std::ofstream out(_NTLOGFILE,std::ios::app);
+    sprintf(s2log,"%4.5f,%4.5f\n",trainErr,testErr);
+    out << s2log;
+    out.close();
 }
 
