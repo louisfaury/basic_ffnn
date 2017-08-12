@@ -144,8 +144,6 @@ VectorXd NeuralNetwork::backPropagate(VectorXd diff)
         lrit++;
     }
 
-
-
     return grad;
 }
 
