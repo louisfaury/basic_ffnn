@@ -40,8 +40,8 @@ int main(int argc, char** argv)
     neuralTrainer.addData(sinDataFile);
     neuralTrainer.setCostFonction((int)Opt_na::Cost_en::SSE);
     neuralTrainer.setOptimizationTools((int)Opt_na::Optimization_en::classic);
-    neuralTrainer.setMaxIter(5000);
-    neuralTrainer.setMiniBatchSize(30);
+    neuralTrainer.setMaxIter(10000);
+    neuralTrainer.setMiniBatchSize(40);
     neuralTrainer.setLearningRate(0.001);
     neuralTrainer.train(&nn);
 }
