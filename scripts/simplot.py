@@ -11,3 +11,4 @@ simdata = np.genfromtxt(simlogfile,delimiter=',')
 # Display 
 plt.plot(simdata[:,0],simdata[:,1])
 plt.plot(simdata[:,0],np.sin(simdata[:,0]),'r')
+plt.savefig("../img/simgrid_1")
