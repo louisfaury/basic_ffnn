@@ -1,6 +1,8 @@
 #include "NeuralNetwork.h"
 #include <random>
 #include "../layer/LinearLayer.h"
+#include <fstream>
+#include <stdio.h>
 
 using namespace Eigen;
 
@@ -8,7 +10,7 @@ NeuralNetwork::NeuralNetwork() : m_depth(0)
 {
 }
 
-NeuralNetwork::NeuralNetwork(int inSize, int outSize) : m_depth(0), m_inSize(inSize), m_outSize(outSize)
+NeuralNetwork::NeuralNetwork(int inSize, int outSize) : m_depth(0), m_inSize(inSize), m_outSize(outSize), _SIMLOGFILE("../log/simlog.txt")
 {
     LinearLayer* inputLayer = new LinearLayer(m_inSize);
     m_layers.push_back(inputLayer);
@@ -201,4 +203,28 @@ void NeuralNetwork::vec2Net(VectorXd w)
             }
         }
     }
+}
+
+void NeuralNetwork::gridSim1d(double lB, double uB, double step)
+{/*! Has to be 1D sim ! !*/
+    int size = (uB-lB)/step+1;
+    double x(lB);
+    Eigen::VectorXd v(1),val(1);
+    for (int i=0; i<size; i++)
+    {
+        v.setZero();
+        v << x;
+        val = feedForward(v);
+        _simlog(x,val(0));
+        x += step;
+    }
+}
+
+void NeuralNetwork::_simlog(double x, double y)
+{
+    std::ofstream f(_SIMLOGFILE,std::ios::app);
+    char s[20];
+    sprintf(s,"%4.5f,%4.5f\n",x,y);
+    f << s;
+    f.close();
 }

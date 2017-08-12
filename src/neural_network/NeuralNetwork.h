@@ -42,14 +42,18 @@ public:
     int getVectorSize(); // returns the size of the nn weight parameter
     Eigen::VectorXd net2Vec();
     void vec2Net(Eigen::VectorXd w);
+    void gridSim1d(double lB, double uB, double step);
 
 protected:
+    void _simlog(double x,double y);
 
     int m_inSize;           // input size
     int m_outSize;          // output size
     int m_depth;            // number of layers
     LayerArray m_layers;
     Weights m_weights;      // weights of the net
+
+    const std::string _SIMLOGFILE;
 };
 
 #endif // NEURALNETWORK_H
